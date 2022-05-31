@@ -3,23 +3,42 @@ import "../quizz.css"
 import Answers from "../Components/answers"
 
 export default function Quizz(props) {
-    const [answer, setAnswer] = useState({})
+    const [answer, setAnswer] = useState([])
+    const [check, setCheck] = useState(true)
     const wrongOne = props.wrongAnswers
-    console.log("Incorrect answers-> ", wrongOne)
-    console.log("Correct answser->", props.correctAnswer)
+    //console.log("Incorrect answers-> ", wrongOne)
+    //console.log("Correct answser->", props.correctAnswer)
     const cAnswer = props.correctAnswer
+    var checkCorrect = true;
 
-    console.log("Answers: " + answer.q +  " and " +  answer.cAnswer)
+    //console.log("Answers: " + answer.q +  " and " +  answer.cAnswer)
+    console.log("answer state : ", answer)
 
-    const passer = (q, cAnswer) => {
-        console.log("Passer function reached. Parameters: ", q + " and " + cAnswer)
-        setAnswer({q, cAnswer})    
-        return(
-            <Answers 
-                answer {...answer}          
-            />
-        )  
+
+    const checkRes = (checkCorrect) => checkCorrect
+    console.log(checkRes)
+
+
+    const passer = (q) => {
+        console.log("Passer function reached")
+        cAnswer === q ? setAnswer(["your answer " + q + " is correct"]) : setAnswer(["Incorrect, correct is " + cAnswer])
+        for( let  i = 0; i < props.wrongAnswers.length; i++)
+        {
+            console.log("Checking correct against ", props.wrongAnswers[i])
+            if (cAnswer !== props.wrongAnswers[i]){
+                checkCorrect = false                
+                console.log("checkCorrect = ", checkCorrect)
+                setCheck(false)
+            }
+            else if (cAnswer === props.wrongAnswers[i])
+            {
+                checkCorrect = true //if correct is one of the answers
+                setCheck(true)
+            }
+        }
+
     }
+    
 
     return (
         <div className='quizz'>
@@ -28,8 +47,16 @@ export default function Quizz(props) {
                 <span className='quizz--question'>
                     {props.question}
                 </span>
-                {wrongOne.map(q => <button className = "quizz--button" onClick = {() => passer(q, cAnswer)}>{q}</button>)}
+                {wrongOne.map(q => <button className = "quizz--button" onClick = {() => passer(q)}>{q}</button>)}
             </div>
+            {answer !== null &&
+            <Answers 
+                answer = {answer}
+                wrongOnes = {wrongOne}
+                correct = {cAnswer}
+                check = {check}
+                
+            />}
             
           </div>
     );
