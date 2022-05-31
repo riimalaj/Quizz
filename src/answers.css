@@ -1,0 +1,41 @@
+.answers{
+    /* questions */
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    left: 400px;
+    top: 112px;
+    margin-left:20px;
+    margin-right:20px;
+    background: #F5F7FB;
+}
+
+
+
+.answers--cAnswers{ 
+    padding: 10opx;
+    top: 30px;
+    left: 75px;
+    width: 500px;
+    height: 40px;
+}
+
+.answers--yAnswers{ 
+    padding: 10opx;
+    top: 80px;
+    left: 75px;
+    width: 500px;
+    height: 40px;
+}
+
+
+.answers-check{
+    position: absolute;
+    width: 120px;
+    height: 35px;
+    left: 215px;
+    top: 490px;
+
+    background: #4D5B9E;
+    border-radius: 10px;
+}

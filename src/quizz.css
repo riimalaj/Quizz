@@ -1,0 +1,38 @@
+.quizz{
+    /* questions */
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    left: 400px;
+    top: 112px;
+    margin-left:20px;
+    margin-right:20px;
+    background: #F5F7FB;
+}
+
+.quizz--question{
+    display:grid;
+    left: 420px;
+    width: 600px;
+    height: 40px;
+    top:20px;
+}
+
+.quizz--button{ 
+    left: 420px;
+    width: fit-content;
+    height: 20px;
+    top:60px;
+}
+
+
+.quizz-check{
+    position: absolute;
+    width: 120px;
+    height: 35px;
+    left: 215px;
+    top: 490px;
+
+    background: #4D5B9E;
+    border-radius: 10px;
+}
